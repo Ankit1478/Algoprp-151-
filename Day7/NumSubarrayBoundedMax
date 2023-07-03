@@ -1,0 +1,25 @@
+
+class Solution {
+    public int numSubarrayBoundedMax(int[] nums, int left, int right) {
+        int si=0;
+        int ei=0;
+        int count=0;
+        int prev=0;
+        int n=nums.length;
+        while(ei<n){
+            if(left<=nums[ei]&& nums[ei]<=right){
+                prev=ei-si+1;
+                count+=prev;
+            }
+            else if(nums[ei]<left){
+                count+=prev;
+            }
+            else{
+                si=ei+1; // break  point
+                prev=0;
+            }
+            ei++;
+        }
+        return count;
+    }
+}
